@@ -1,0 +1,17 @@
+App As appinfo:
+    BackEnabled: |-
+        =//true
+        false
+    ConfirmExit: |-
+        =//false
+        true
+    ConfirmExitMessage: ="bạn có chắc chắc"
+    Theme: =PowerAppsTheme
+
+    Host As hostControl.DefaultHostControlVariant:
+        OnCancel: =false
+        OnEdit: =false
+        OnNew: =false
+        OnSave: =false
+        OnView: =false
+

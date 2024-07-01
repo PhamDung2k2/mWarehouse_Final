@@ -1,0 +1,53 @@
+[
+  {
+    "ApiId": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+    "CdpRevision": {
+      "BaseUrl": "/",
+      "LastChangedTimeString": "2024-04-15T16:30:47.8560000Z",
+      "RevisionNumber": 1
+    },
+    "ConnectedDataSourceInfoNameMapping": {
+      "{Attachments}": "Attachments",
+      "{Attachments}@odata.type": "{Attachments} ({Attachments}@odata.type)",
+      "{FilenameWithExtension}": "File name with extension",
+      "{FullPath}": "Full Path",
+      "{HasAttachments}": "Has attachments",
+      "{Identifier}": "Identifier",
+      "{IsFolder}": "IsFolder",
+      "{Link}": "Link to item",
+      "{ModerationComment}": "Comments associated with the content approval of this list item",
+      "{ModerationStatus}": "Content approval status",
+      "{Name}": "Name",
+      "{Path}": "Folder path",
+      "{Thumbnail}": "Thumbnail",
+      "{TriggerWindowEndToken}": "Trigger Window End Token",
+      "{TriggerWindowStartToken}": "Trigger Window Start Token",
+      "{VersionNumber}": "Version number",
+      "amount": "amount",
+      "Author": "Created By",
+      "Author#Claims": "Created By Claims",
+      "comment": "comment",
+      "ComplianceAssetId": "Compliance Asset Id",
+      "Created": "Created",
+      "dateApproved": "dateApproved",
+      "Editor": "Modified By",
+      "Editor#Claims": "Modified By Claims",
+      "ID": "ID",
+      "importCode": "importCode",
+      "Modified": "Modified",
+      "OData__ColorTag": "Color Tag",
+      "status": "status",
+      "status#Id": "status Id",
+      "supplierID": "supplierID",
+      "Title": "Title",
+      "totalPrice": "totalPrice",
+      "userID": "userID"
+    },
+    "DatasetName": "https://bhktechcorp.sharepoint.com/sites/daotran",
+    "EncodeDataset": true,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "Name": "mWarehouse.Imports",
+    "Type": "ConnectedDataSourceInfo"
+  }
+]

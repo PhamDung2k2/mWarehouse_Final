@@ -1,0 +1,977 @@
+ThongKe As screen:
+    Fill: =RGBA(241, 244, 249, 1)
+    LoadingSpinnerColor: =App.Theme.Colors.Primary
+
+    Container1_4 As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Semibold
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =100
+        RadiusBottomLeft: =10
+        RadiusBottomRight: =10
+        RadiusTopLeft: =10
+        RadiusTopRight: =10
+        Width: =Parent.Width
+        ZIndex: =1
+
+        Image2_4 As image:
+            BorderColor: =App.Theme.Colors.Darker40
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Image: =BHKlogo
+            Width: =256
+            ZIndex: =1
+
+        Label5_8 As label:
+            BorderColor: =App.Theme.Colors.Darker40
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Bold
+            Height: =47
+            Size: =15
+            Text: =LookUp('mWarehouse.Users',account = TextInput1.Text).Title
+            Width: =259
+            X: =1107
+            Y: =3
+            ZIndex: =2
+
+        Label5_9 As label:
+            BorderColor: =App.Theme.Colors.Darker40
+            Color: =RGBA(99, 139, 44, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Bold
+            Height: =47
+            Size: =13
+            Text: =LookUp('mWarehouse.Users',account = TextInput1.Text).role.Value
+            Width: =259
+            X: =1107
+            Y: =50
+            ZIndex: =3
+
+        Image3_4 As image:
+            BorderColor: =App.Theme.Colors.Darker40
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Image: ='kisspng-user-computer-icons-gravatar-blog-happy-woman-5aca6d038826d9.7357010215232156195577'
+            RadiusBottomLeft: =50
+            RadiusBottomRight: =50
+            RadiusTopLeft: =50
+            RadiusTopRight: =50
+            X: =1007
+            ZIndex: =4
+
+    Container3_4 As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Semibold
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =Parent.Height-110
+        RadiusBottomLeft: =10
+        RadiusBottomRight: =10
+        RadiusTopLeft: =10
+        RadiusTopRight: =10
+        Width: |
+            =200
+        Y: =110
+        ZIndex: =2
+
+        "Gallery1_4 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0'":
+            BorderColor: =App.Theme.Colors.Darker40
+            DelayItemLoading: =true
+            Height: =420
+            Items: |-
+                =If(
+                    LookUp(
+                        'mWarehouse.Users',
+                        account = TextInput1.Text
+                    ).role.Value = "Giám đốc",
+                    Table(
+                        {
+                            ID: 1,
+                            Title: "Trang chủ",
+                            Name: TrangChu
+                        },
+                        {
+                            ID: 2,
+                            Title: "Thông tin",
+                            Name: ThongTin
+                        },
+                        {
+                            ID: 3,
+                            Title: "Yêu cầu",
+                            Name: YeuCau
+                        },
+                        {
+                            ID: 4,
+                            Title: "Thống kê",
+                            Name: ThongKe
+                        },
+                        {
+                            ID: 5,
+                            Title: "Duyệt đơn",
+                            Name: DuyetDon
+                        }
+                    ),
+                    Table(
+                        {
+                            ID: 1,
+                            Title: "Trang chủ",
+                            Name: TrangChu
+                        },
+                        {
+                            ID: 2,
+                            Title: "Thông tin",
+                            Name: ThongTin
+                        },
+                        {
+                            ID: 3,
+                            Title: "Yêu cầu",
+                            Name: YeuCau
+                        },
+                        {
+                            ID: 4,
+                            Title: "Thống kê",
+                            Name: ThongKe
+                        }
+                    )
+                )
+            Layout: =Layout.Vertical
+            LoadingSpinner: =LoadingSpinner.Data
+            OnSelect: |-
+                =Set(ShowFill,ThisItem.ID);
+                Navigate(ThisItem.Name,ScreenTransition.Fade)
+            TemplatePadding: =0
+            TemplateSize: =83
+            Width: =200
+            Y: =12
+            ZIndex: =1
+
+            Separator1_4 As rectangle:
+                BorderColor: =App.Theme.Colors.Darker40
+                Fill: =RGBA(255, 255, 255, 1)
+                Height: =7
+                OnSelect: =Select(Parent)
+                Width: =Parent.TemplateWidth
+                Y: =39
+                ZIndex: =5
+
+            Label6_4 As label:
+                Align: =Align.Center
+                BorderColor: =App.Theme.Colors.Darker40
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Fill: =If(ThisItem.ID = ShowFill,Color.Gray,RGBA(0,0,0,0))
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                Height: =53
+                OnSelect: =Select(Parent)
+                Size: =13
+                Text: =ThisItem.Title
+                Width: =200
+                Y: =23
+                ZIndex: =7
+
+        Label7_4 As label:
+            BorderColor: =App.Theme.Colors.Darker40
+            Color: =RGBA(0, 0, 0, 1)
+            DisabledColor: =RGBA(166, 166, 166, 1)
+            Font: =App.Theme.Font
+            FontWeight: =FontWeight.Semibold
+            OnSelect: =Navigate(DangNhap); Reset(TextInput1);Reset(TextInput1_1);
+            Size: =13
+            Text: ="Đăng xuất"
+            Width: =100
+            X: =66
+            Y: =597
+            ZIndex: =2
+
+        Image4_4 As image:
+            BorderColor: =App.Theme.Colors.Darker40
+            DisabledBorderColor: =RGBA(166, 166, 166, 1)
+            DisabledFill: =RGBA(244, 244, 244, 1)
+            Height: =59
+            Image: ='icons8-logout-100'
+            OnSelect: =Navigate(DangNhap); Reset(TextInput1);Reset(TextInput1_1);
+            Width: =61
+            X: =17
+            Y: =588
+            ZIndex: =3
+
+    Container4_4 As groupContainer.manualLayoutContainer:
+        DropShadow: =DropShadow.Semibold
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =Parent.Height - 110
+        RadiusBottomLeft: =10
+        RadiusBottomRight: =10
+        RadiusTopLeft: =10
+        RadiusTopRight: =10
+        Width: =Parent.Width - 210
+        X: =210
+        Y: =110
+        ZIndex: =3
+
+        Container2_4 As groupContainer.manualLayoutContainer:
+            DropShadow: =DropShadow.Semilight
+            Height: =70
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            Width: =Parent.Width
+            ZIndex: =1
+
+            Label8_4 As label:
+                BorderColor: =App.Theme.Colors.Darker40
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                Height: =35
+                Size: =16
+                Text: ="Thống kê tổng quan "
+                Width: =267
+                X: =79
+                Y: =20
+                ZIndex: =1
+
+            Icon5 As icon.Trending:
+                BorderColor: =App.Theme.Colors.Darker40
+                Color: =App.Theme.Colors.Darker30
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(244, 244, 244, 1)
+                Height: =55
+                Icon: =Icon.Trending
+                Width: =55
+                X: =15
+                Y: =6
+                ZIndex: =2
+
+            Label9_4 As label:
+                BorderColor: =App.Theme.Colors.Darker40
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                Height: =41
+                Size: =13
+                Text: ="Chọn loại biểu đồ "
+                Width: =171
+                X: =620
+                Y: =14
+                ZIndex: =3
+
+            ComboBox1 As combobox:
+                BorderColor: =App.Theme.Colors.Darker40
+                ChevronBackground: =App.Theme.Colors.Primary
+                ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                ChevronHoverBackground: =App.Theme.Colors.Darker10
+                ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayFields: =["Value"]
+                Font: =App.Theme.Font
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =App.Theme.Colors.Lighter70
+                InputTextPlaceholder: ="Chọn nội dung biểu đồ"
+                Items: =["Số lượng đơn nhập được tạo","Số lượng đơn xuất được tạo","Thống kê theo trạng thái đơn nhập","Thống kê theo trạng thái đơn xuất","Tổng quan số lượng của các sản phẩm"]
+                OnChange: |-
+                    =If(
+                        ComboBox1.Selected.Value = "Số lượng đơn nhập được tạo",
+                        UpdateContext({ShowQuantity:true,IsDNQuantity:true,ShowTT_NX: false,ShowProductQuantity:false}),
+                        If(
+                            ComboBox1.Selected.Value = "Số lượng đơn xuất được tạo",
+                            UpdateContext({ShowQuantity:true,IsDNQuantity:false,ShowTT_NX: false,ShowProductQuantity:false}),
+                            If(
+                                ComboBox1.Selected.Value = "Thống kê theo trạng thái đơn nhập",
+                                UpdateContext({ShowTT_NX: true,IsDN: true,ShowQuantity:false,ShowProductQuantity:false});
+                                /*ClearCollect(
+                                    TT_NX,
+                                    Table(
+                                        {
+                                            ID: 1,
+                                            statusN: "Chờ duyệt",
+                                            quantity: {
+                                                Value: CountIf(
+                                                    'mWarehouse.Imports',
+                                                    status.Value = "Chờ duyệt"
+                                                )
+                                            }
+                                        },
+                                        {
+                                            ID: 2,
+                                            statusN: "Đơn hàng",
+                                            quantity: {
+                                                Value: CountIf(
+                                                    'mWarehouse.Imports',
+                                                    status.Value = "Đơn hàng"
+                                                )
+                                            }
+                                        },
+                                        {
+                                            ID: 3,
+                                            statusN: "Từ chối",
+                                            quantity: {
+                                                Value: CountIf(
+                                                    'mWarehouse.Imports',
+                                                    status.Value = "Từ chối"
+                                                )
+                                            }
+                                        },
+                                        {
+                                            ID: 4,
+                                            statusN: "Hoàn thành",
+                                            quantity: {
+                                                Value: CountIf(
+                                                    'mWarehouse.Imports',
+                                                    status.Value = "Hoàn thành"
+                                                )
+                                            }
+                                        }
+                                    )
+                                );*/
+                                ,
+                                If(
+                                    ComboBox1.Selected.Value = "Thống kê theo trạng thái đơn xuất",
+                                    UpdateContext({ShowTT_NX: true,IsDN: false,ShowQuantity:false,ShowProductQuantity:false});
+                                    /*ClearCollect(
+                                    TT_NX,
+                                    Table(
+                                        {
+                                            ID: 1,
+                                            statusN: "Chờ duyệt",
+                                            quantity: {
+                                                Value: CountIf(
+                                                    'mWarehouse.Exports',
+                                                    status.Value = "Chờ duyệt"
+                                                )
+                                            }
+                                        },
+                                        {
+                                            ID: 2,
+                                            statusN: "Đơn hàng",
+                                            quantity: {
+                                                Value: CountIf(
+                                                    'mWarehouse.Exports',
+                                                    status.Value = "Đơn hàng"
+                                                )
+                                            }
+                                        },
+                                        {
+                                            ID: 3,
+                                            statusN: "Từ chối",
+                                            quantity: {
+                                                Value: CountIf(
+                                                    'mWarehouse.Exports',
+                                                    status.Value = "Từ chối"
+                                                )
+                                            }
+                                        },
+                                        {
+                                            ID: 4,
+                                            statusN: "Hoàn thành",
+                                            quantity: {
+                                                Value: CountIf(
+                                                    'mWarehouse.Exports',
+                                                    status.Value = "Hoàn thành"
+                                                )
+                                            }
+                                        }
+                                    )
+                                );*/
+                                    ,
+                                    If(
+                                        ComboBox1.Selected.Value = "Tổng quan số lượng của các sản phẩm",
+                                        UpdateContext({ShowQuantity:false,ShowTT_NX:false,ShowProductQuantity:true})
+                                    )
+                                )
+                            )
+                        )
+                    )
+                PressedColor: =RGBA(255, 255, 255, 1)
+                PressedFill: =App.Theme.Colors.Darker30
+                SearchFields: =["Value"]
+                SearchItems: =Search(["Số lượng đơn nhập được tạo","Số lượng đơn xuất được tạo","Thống kê theo trạng thái đơn nhập","Thống kê theo trạng thái đơn xuất","Tổng quan số lượng của các sản phẩm"],ComboBox1.SearchText,Value)
+                SelectionFill: =App.Theme.Colors.Primary
+                SelectMultiple: =false
+                Size: =13
+                X: =798
+                Y: =13
+                ZIndex: =4
+
+        Container10 As groupContainer.manualLayoutContainer:
+            DropShadow: =DropShadow.Light
+            Height: =587
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            Width: =Parent.Width
+            Y: =70
+            ZIndex: =3
+
+            "Gallery4 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0'":
+                BorderColor: =App.Theme.Colors.Darker40
+                DelayItemLoading: =true
+                Height: =538
+                Items: =If(ClickChartCL,Search(Filter('mWarehouse.Products',status.Value = "Kinh doanh"),ColumnChart3.Selected.'data-ADB4D7A662F548B49FAC2B986E348A1BproductCode',productCode),Filter('mWarehouse.Products',status.Value = "Kinh doanh"))
+                Layout: =Layout.Vertical
+                LoadingSpinner: =LoadingSpinner.Data
+                TemplatePadding: =0
+                TemplateSize: =104
+                Visible: =ShowProductQuantity
+                Width: =366
+                X: =790
+                Y: =49
+                ZIndex: =1
+
+                Image5 As image:
+                    BorderColor: =App.Theme.Colors.Darker40
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    DisabledFill: =RGBA(244, 244, 244, 1)
+                    Height: =72
+                    Image: =ThisItem.image
+                    OnSelect: =Select(Parent)
+                    RadiusBottomLeft: =8
+                    RadiusBottomRight: =8
+                    RadiusTopLeft: =8
+                    RadiusTopRight: =8
+                    Width: =72
+                    X: =16
+                    Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+                    ZIndex: =1
+
+                Title6 As label:
+                    Color: =RGBA(50, 49, 48, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    Font: =App.Theme.Font
+                    FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                    Height: =Self.Size * 4
+                    OnSelect: =Select(Parent)
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Size: =13
+                    Text: =ThisItem.Title
+                    VerticalAlign: =VerticalAlign.Top
+                    Width: |
+                        =Parent.TemplateWidth - 120
+                    X: =103
+                    Y: =14
+                    ZIndex: =2
+
+                Subtitle1 As label:
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    Font: =App.Theme.Font
+                    FontWeight: =If(ThisItem.IsSelected, FontWeight.Semibold, FontWeight.Normal)
+                    Height: =Self.Size * 1.8
+                    OnSelect: =Select(Parent)
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    Size: =12
+                    Text: |-
+                        =ThisItem.category.Value & " : " &ThisItem.quantity
+                    VerticalAlign: =VerticalAlign.Top
+                    Width: =Title6.Width
+                    X: =Title6.X
+                    Y: =Title6.Y + Title6.Height
+                    ZIndex: =3
+
+                Separator3 As rectangle:
+                    BorderColor: =App.Theme.Colors.Darker40
+                    Fill: =RGBA(255, 255, 255, 1)
+                    Height: =8
+                    OnSelect: =Select(Parent)
+                    Width: =Parent.TemplateWidth
+                    Y: =Parent.TemplateHeight - Self.Height
+                    ZIndex: =5
+
+                Rectangle5 As rectangle:
+                    BorderColor: =App.Theme.Colors.Darker40
+                    Fill: =App.Theme.Colors.Darker30
+                    Height: =Parent.TemplateHeight - Separator3.Height
+                    OnSelect: =Select(Parent)
+                    Visible: =ThisItem.IsSelected
+                    Width: =4
+                    ZIndex: =6
+
+            CompositePieChart2 As group:
+                Height: =5
+                Width: =5
+                X: =40
+                Y: =40
+                ZIndex: =1
+
+                Title2 As label:
+                    Align: =Align.Center
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    Font: =App.Theme.Font
+                    FontWeight: =FontWeight.Semibold
+                    Height: =49
+                    Size: |
+                        =20
+                    Text: =ComboBox1.Selected.Value
+                    Visible: =ShowTT_NX
+                    Width: =1156
+                    ZIndex: =2
+
+                PieChart2 As pieChart:
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    Height: =587
+                    ItemColorSet: =[RGBA(49, 130, 93, 1),RGBA(48,166,103, 1), RGBA(94,193,108,1), RGBA(246,199,144,1), RGBA(247,199,114,1), RGBA(247,180,91,1), RGBA(246,143,100,1), RGBA(212,96,104,1), RGBA(148, 110, 176, 1), RGBA(118, 154, 204, 1), RGBA(96, 197, 234, 1)]
+                    Items: |-
+                        =If(
+                            IsDN,
+                            AddColumns(
+                                AddColumns(
+                                    GroupBy(
+                                        AddColumns(
+                                            ShowColumns(
+                                                'mWarehouse.Imports',
+                                                status
+                                            ),
+                                            status_Name,
+                                            status.Value
+                                        ),
+                                        status_Name,
+                                        gr_Status_Name
+                                    ),
+                                    quantity,
+                                    CountRows(ThisRecord.gr_Status_Name)
+                                ),
+                                lable,
+                                Concatenate(
+                                    status_Name,
+                                    " (",
+                                    quantity,
+                                    ") "
+                                )
+                            ),
+                            AddColumns(
+                                AddColumns(
+                                    GroupBy(
+                                        AddColumns(
+                                            ShowColumns(
+                                                'mWarehouse.Exports',
+                                                status
+                                            ),
+                                            status_Name,
+                                            status.Value
+                                        ),
+                                        status_Name,
+                                        gr_Status_Name
+                                    ),
+                                    quantity,
+                                    CountRows(ThisRecord.gr_Status_Name)
+                                ),
+                                lable,
+                                Concatenate(
+                                    status_Name,
+                                    " (",
+                                    quantity,
+                                    ") "
+                                )
+                            )
+                        )
+                    Size: |
+                        =15
+                    Visible: =ShowTT_NX
+                    Width: =808
+                    ZIndex: =3
+
+                Legend2 As legend:
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    Font: =App.Theme.Font
+                    Height: =217
+                    ItemColorSet: =PieChart2.ItemColorSet
+                    Items: =PieChart2.SeriesLabels
+                    Size: =16
+                    Visible: =ShowTT_NX
+                    Width: =386
+                    X: =770
+                    Y: =370
+                    ZIndex: =4
+
+            CompositeColumnChart1 As group:
+                Height: =5
+                Width: =5
+                X: =40
+                Y: =40
+                ZIndex: =5
+
+                Title3 As label:
+                    Align: =Align.Center
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    Font: =App.Theme.Font
+                    FontWeight: =FontWeight.Semibold
+                    Height: =37
+                    Size: =15
+                    Text: =ComboBox1.Selected.Value
+                    Visible: =ShowQuantity
+                    Width: =Container10.Width
+                    ZIndex: =6
+
+                ColumnChart1 As barChart:
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    GridStyle: =GridStyle.All
+                    Height: =587
+                    ItemColorSet: =[RGBA(49, 130, 93, 1),RGBA(48,166,103, 1), RGBA(94,193,108,1), RGBA(246,199,144,1), RGBA(247,199,114,1), RGBA(247,180,91,1), RGBA(246,143,100,1), RGBA(212,96,104,1), RGBA(148, 110, 176, 1), RGBA(118, 154, 204, 1), RGBA(96, 197, 234, 1)]
+                    Items: |-
+                        =If(
+                            IsDNQuantity,
+                            AddColumns(
+                                AddColumns(
+                                    AddColumns(
+                                        AddColumns(
+                                            GroupBy(
+                                                ShowColumns(
+                                                    'mWarehouse.Imports',
+                                                    userID
+                                                ),
+                                                userID,
+                                                gr_UserID
+                                            ),
+                                            userName,
+                                            LookUp(
+                                                'mWarehouse.Users',
+                                                ID = userID
+                                            ).Title
+                                        ),
+                                        userRole,
+                                        LookUp(
+                                            'mWarehouse.Users',
+                                            ID = userID
+                                        ).role.Value
+                                    ),
+                                    quantity,
+                                    CountRows(ThisRecord.gr_UserID)
+                                ),
+                                lable,
+                                Concatenate(
+                                    userRole
+                                )
+                            ),
+                            AddColumns(
+                                AddColumns(
+                                    AddColumns(
+                                        AddColumns(
+                                            GroupBy(
+                                                ShowColumns(
+                                                    'mWarehouse.Exports',
+                                                    userID
+                                                ),
+                                                userID,
+                                                gr_UserID
+                                            ),
+                                            userName,
+                                            LookUp(
+                                                'mWarehouse.Users',
+                                                ID = userID
+                                            ).Title
+                                        ),
+                                        userRole,
+                                        LookUp(
+                                            'mWarehouse.Users',
+                                            ID = userID
+                                        ).role.Value
+                                    ),
+                                    quantity,
+                                    CountRows(ThisRecord.gr_UserID)
+                                ),
+                                lable,
+                                Concatenate(
+                                    userRole
+                                )
+                            )
+                        )
+                    ItemsGap: =10
+                    Size: =15
+                    Visible: =ShowQuantity
+                    Width: =1156
+                    XLabelAngle: =0
+                    ZIndex: =7
+
+            CompositeColumnChart3 As group:
+                Height: =5
+                Width: =5
+                X: =40
+                Y: =40
+                ZIndex: =8
+
+                Title4 As label:
+                    Align: =Align.Center
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    Font: =App.Theme.Font
+                    FontWeight: =FontWeight.Semibold
+                    Height: =35
+                    OnSelect: |-
+                        =UpdateContext({ClickChartCL:false})
+                    Size: =15
+                    Text: =ComboBox1.Selected.Value
+                    Visible: =ShowProductQuantity
+                    Width: =Parent.Width/1.5
+                    Y: =7
+                    ZIndex: =9
+
+                ColumnChart3 As barChart:
+                    DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                    GridStyle: =GridStyle.All
+                    Height: =538
+                    ItemColorSet: =[ RGBA(94,193,108,1), RGBA(94,193,108,1), RGBA(94,193,108,1),  RGBA(94,193,108,1),  RGBA(94,193,108,1), RGBA(94,193,108,1), RGBA(94,193,108,1), RGBA(94,193,108,1), RGBA(94,193,108,1),  RGBA(94,193,108,1), RGBA(94,193,108,1)]
+                    Items: |-
+                        =//ColumnChartSample
+                        /*
+                        If(
+                            IsDNQuantity,
+                            AddColumns(
+                                AddColumns(
+                                    AddColumns(
+                                        AddColumns(
+                                            GroupBy(
+                                                ShowColumns(
+                                                    'mWarehouse.Imports',
+                                                    userID
+                                                ),
+                                                userID,
+                                                gr_UserID
+                                            ),
+                                            userName,
+                                            LookUp(
+                                                'mWarehouse.Users',
+                                                ID = userID
+                                            ).Title
+                                        ),
+                                        userRole,
+                                        LookUp(
+                                            'mWarehouse.Users',
+                                            ID = userID
+                                        ).role.Value
+                                    ),
+                                    quantity,
+                                    CountRows(ThisRecord.gr_UserID)
+                                ),
+                                lable,
+                                Concatenate(
+                                    userRole
+                                )
+                            ),
+                            AddColumns(
+                                AddColumns(
+                                    AddColumns(
+                                        AddColumns(
+                                            GroupBy(
+                                                ShowColumns(
+                                                    'mWarehouse.Exports',
+                                                    userID
+                                                ),
+                                                userID,
+                                                gr_UserID
+                                            ),
+                                            userName,
+                                            LookUp(
+                                                'mWarehouse.Users',
+                                                ID = userID
+                                            ).Title
+                                        ),
+                                        userRole,
+                                        LookUp(
+                                            'mWarehouse.Users',
+                                            ID = userID
+                                        ).role.Value
+                                    ),
+                                    quantity,
+                                    CountRows(ThisRecord.gr_UserID)
+                                ),
+                                lable,
+                                Concatenate(
+                                    userRole
+                                )
+                            )
+                        )*/
+                        AddColumns(
+                            AddColumns(
+                                ShowColumns(
+                                    Filter (
+                                        'mWarehouse.Products',
+                                        status.Value = "Kinh doanh"
+                                    ),
+                                    productCode
+                                ) As Temp,
+                                pName,
+                                LookUp(
+                                    'mWarehouse.Products',
+                                    productCode = Temp.productCode And status.Value = "Kinh doanh"
+                                ).Title
+                            ) As temp,
+                            quantity,
+                            LookUp(
+                                'mWarehouse.Products',
+                                productCode = temp.productCode And status.Value = "Kinh doanh"
+                            ).quantity
+                        )
+                    ItemsGap: |
+                        =25
+                    OnSelect: |-
+                        =UpdateContext({ClickChartCL:true})
+                    PaddingLeft: =10
+                    PaddingRight: =10
+                    SeriesAxisMax: =250
+                    SeriesAxisMin: =0
+                    Size: =15
+                    Visible: =ShowProductQuantity
+                    Width: =770
+                    XLabelAngle: =20
+                    Y: =49
+                    ZIndex: =10
+
+            Title4_1 As label:
+                Align: =Align.Center
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                FontWeight: =FontWeight.Semibold
+                Height: =35
+                OnSelect: |-
+                    =UpdateContext({ClickChartCL:false})
+                Size: =15
+                Text: ="Chi tiết"
+                Visible: =ShowProductQuantity
+                Width: |
+                    =150
+                X: =898
+                Y: =7
+                ZIndex: =11
+
+    ThemSp_2 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =6
+
+        Rectangle1_6 As rectangle:
+            BorderColor: =RGBA(202, 202, 202, 1)
+            Fill: =RGBA(202, 202, 202, 0.5)
+            Height: =Parent.Height
+            OnSelect: |-
+                =UpdateContext({ShowThemSP: false})
+            Visible: =ShowThemSP
+            Width: =Parent.Width
+            ZIndex: =4
+
+        Container9_6 As groupContainer.manualLayoutContainer:
+            DropShadow: =DropShadow.Light
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =Parent.Height/1.2
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            Visible: =ShowThemSP
+            Width: =Parent.Width/1.2
+            X: =Rectangle1_6.Width/12
+            Y: =Rectangle1_6.Height/12
+            ZIndex: =5
+
+            Label1_6 As label:
+                BorderColor: =App.Theme.Colors.Darker40
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Size: =13
+                Text: ="Thêm sản phẩm"
+                X: =40
+                Y: =40
+                ZIndex: =1
+
+    ThemNCC_2 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =8
+
+        Rectangle1_7 As rectangle:
+            BorderColor: =RGBA(202, 202, 202, 1)
+            Fill: =RGBA(202, 202, 202, 0.5)
+            Height: =Parent.Height
+            OnSelect: |-
+                =UpdateContext({ShowThemNCC: false})
+            Visible: =ShowThemNCC
+            Width: =Parent.Width
+            ZIndex: =6
+
+        Container9_7 As groupContainer.manualLayoutContainer:
+            DropShadow: =DropShadow.Light
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =Parent.Height/1.2
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            Visible: =ShowThemNCC
+            Width: =Parent.Width/1.2
+            X: =Rectangle1_7.Width/12
+            Y: =Rectangle1_7.Height/12
+            ZIndex: =7
+
+            Label1_7 As label:
+                BorderColor: =App.Theme.Colors.Darker40
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Size: =13
+                Text: ="Thêm Nhà cung cấp"
+                X: =40
+                Y: =40
+                ZIndex: =1
+
+    ThemDon_2 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =10
+
+        Rectangle1_8 As rectangle:
+            BorderColor: =RGBA(202, 202, 202, 1)
+            Fill: =RGBA(202, 202, 202, 0.5)
+            Height: =Parent.Height
+            OnSelect: |-
+                =UpdateContext({ShowThemDon: false})
+            Visible: =ShowThemDon
+            Width: =Parent.Width
+            ZIndex: =8
+
+        Container9_8 As groupContainer.manualLayoutContainer:
+            DropShadow: =DropShadow.Light
+            Fill: =RGBA(255, 255, 255, 1)
+            Height: =Parent.Height/1.2
+            RadiusBottomLeft: =4
+            RadiusBottomRight: =4
+            RadiusTopLeft: =4
+            RadiusTopRight: =4
+            Visible: =ShowThemDon
+            Width: =Parent.Width/1.2
+            X: =Rectangle1_8.Width/12
+            Y: =Rectangle1_8.Height/12
+            ZIndex: =9
+
+            Label1_8 As label:
+                BorderColor: =App.Theme.Colors.Darker40
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Font: =App.Theme.Font
+                Size: =13
+                Text: ="Thêm Đơn"
+                X: =40
+                Y: =40
+                ZIndex: =1
+
