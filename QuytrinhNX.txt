@@ -1,0 +1,18 @@
+Quy trình nhập hàng cần những bước
+	Lập kế hoạch nhập hàng
+		Xác định nhu cầu nhập hàng dựa trên các đơn đặt hàng, mức tồn, dự báo nhu cầu.
+		Kế toán lập đơn nhập hàng -> gửi đơn đến giám đốc phê duyệt.
+		Liên hệ với nhà cung cấp để đặt hàng và xác nhận đơn hàng
+	Nhận hàng, kiểm kê
+		Khi hàng đến kho, nhân viên kho sẽ kiểm kê số lượng, chất lượng hàng hóa. Có sai sót liên hệ với bên nhà cung cấp
+	Cập nhật lại số lượng 
+		Xác nhận số lượng sản phẩm đã được giao bởi nhà cung cấp
+		Lưu giữ phiếu nhập kho khi kiểm kê hoàn tất
+============================================================================
+Quy trình xuất hàng cần những bước
+	Lập kế hoạch xuất hàng
+		Xác định hàng hóa cần xuất dựa trên đơn đặt hàng từ khách hàng
+		Lập danh sách cần xuất kho -> gửi đến giám đốc phê duyệt.
+	Chuẩn bị hàng hóa
+		Nhân viên kho nhận được đơn đã đồng ý duyệt tiếp tục thực hiện công việc kiểm kê số lượng
+		Cập nhật lại số lượng hàng hóa
